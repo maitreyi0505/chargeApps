@@ -1,4 +1,4 @@
-package com.chargePoint.eventProducer;
+package com.chargePoint.config;
 
 import com.chargePoint.models.AclAuthenticatorQueuingMessage;
 import java.util.HashMap;
@@ -54,6 +54,7 @@ public class KafkaProducerConfig {
   }
 
   @Bean
+  // Set up producer configs & create bean for Kafka Producer
   public KafkaTemplate<String, AclAuthenticatorQueuingMessage> kafkaTemplate() {
     return new KafkaTemplate<>(producerFactory());
   }

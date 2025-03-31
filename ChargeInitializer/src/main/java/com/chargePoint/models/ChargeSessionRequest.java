@@ -1,10 +1,17 @@
 package com.chargePoint.models;
 
+/**
+ * Model for incoming API request for initializing charge session.
+ */
 public class ChargeSessionRequest {
 
-  // UUID identifier of the station
+  // UUID identifier of the station from where charge request is being made
   private String stationId;
+
+  // Identifier token for the driver initializing charge request
   private String driverId;
+
+  // Callback URL for sending out the response of authorization check
   private String callbackUrl;
 
   public ChargeSessionRequest(String stationId, String driverId, String callbackUrl) {

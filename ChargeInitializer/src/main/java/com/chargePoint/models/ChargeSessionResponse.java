@@ -1,8 +1,14 @@
 package com.chargePoint.models;
 
+/**
+ * Model for the immediate API response of initializing charge session.
+ */
 public class ChargeSessionResponse {
 
+  // Response status for the request
   private String status;
+
+  // Message containing details related to the response status
   private String message;
 
   public void setStatus(String status) {
