@@ -29,11 +29,10 @@ public class SessionRequestValidator {
 
   private static boolean isStationIDValid(String stationId) {
     try{
-      UUID.fromString(stationId);
+      return UUID.fromString(stationId).version() == 4;
     } catch (IllegalArgumentException ex){
       return false;
     }
-    return true;
   }
 
   private static boolean isDriverIdValid(String driverId) {
