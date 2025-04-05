@@ -45,13 +45,15 @@ public class AuthenticationRequestHandler {
     } catch (QueryTimeoutException ex) {
       permissionStatus = PermissionStatus.UNKNOWN;
     }
-    _log.info("Permission Status computed for the request" + permissionStatus.name());
+    _log.info("Permission Status computed for the request: " + permissionStatus.name());
 
     CallbackRequest callbackRequest = new CallbackRequest(stationId, driverId, permissionStatus);
     int responseCode = _callbackHandler.sendResponseToCallback(callbackUrl, callbackRequest);
 
     AclResponseAudit aclResponseAudit = new AclResponseAudit(stationId, driverId, callbackUrl, timestamp,
         permissionStatus, responseCode);
+
+    _log.info("Audit created for this request: " + aclResponseAudit.toString());
     _aclResponseAuditDAO.insertAclResponseAudit(aclResponseAudit);
   }
 

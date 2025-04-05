@@ -82,4 +82,11 @@ public class AclResponseAudit {
   public void setCallbackResponseStatus(int callbackResponseStatus) {
     this.callbackResponseStatus = callbackResponseStatus;
   }
+
+  @Override
+  public String toString() {
+    return "AclResponseAudit{" + "stationId='" + stationId + '\'' + ", driverId='" + driverId + '\'' + ", callbackUrl='"
+        + callbackUrl + '\'' + ", timestamp=" + timestamp + ", permissionStatus=" + permissionStatus
+        + ", callbackResponseStatus=" + callbackResponseStatus + '}';
+  }
 }
