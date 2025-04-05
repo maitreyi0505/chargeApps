@@ -29,17 +29,17 @@ public class SessionRequestValidator {
 
   private static boolean isStationIDValid(String stationId) {
     try{
-      return UUID.fromString(stationId).version() == 4;
+      UUID.fromString(stationId);
     } catch (IllegalArgumentException ex){
       return false;
     }
+    return true;
   }
 
   private static boolean isDriverIdValid(String driverId) {
-    Pattern pattern = Pattern.compile("[a-zA-Z0-9_\\-.]{20,80}", Pattern.CASE_INSENSITIVE);
+    Pattern pattern = Pattern.compile("^[a-zA-Z0-9_\\-.~]{20,80}$", Pattern.CASE_INSENSITIVE);
     Matcher matcher = pattern.matcher(driverId);
-    boolean matchFound = matcher.find();
-    return (driverId.length() >= 20 && driverId.length() <= 80 && matchFound);
+    return matcher.find();
   }
 
   private static boolean isUrlValid(String callbackUrl) {
